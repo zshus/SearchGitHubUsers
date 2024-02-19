@@ -28,20 +28,27 @@ import com.mendix.webui.CustomJavaAction;
  */
 public class DecodeVerifyJWTPlainText extends CustomJavaAction<java.lang.String>
 {
-	private java.lang.String encodedJWT;
-	private java.lang.String issuer;
-	private java.lang.String audience;
-	private java.lang.String jwksUri;
-	private java.lang.Long leeway;
+	private final java.lang.String encodedJWT;
+	private final java.lang.String issuer;
+	private final java.lang.String audience;
+	private final java.lang.String jwksUri;
+	private final java.lang.Long leeway;
 
-	public DecodeVerifyJWTPlainText(IContext context, java.lang.String encodedJWT, java.lang.String issuer, java.lang.String audience, java.lang.String jwksUri, java.lang.Long leeway)
+	public DecodeVerifyJWTPlainText(
+		IContext context,
+		java.lang.String _encodedJWT,
+		java.lang.String _issuer,
+		java.lang.String _audience,
+		java.lang.String _jwksUri,
+		java.lang.Long _leeway
+	)
 	{
 		super(context);
-		this.encodedJWT = encodedJWT;
-		this.issuer = issuer;
-		this.audience = audience;
-		this.jwksUri = jwksUri;
-		this.leeway = leeway;
+		this.encodedJWT = _encodedJWT;
+		this.issuer = _issuer;
+		this.audience = _audience;
+		this.jwksUri = _jwksUri;
+		this.leeway = _leeway;
 	}
 
 	@java.lang.Override

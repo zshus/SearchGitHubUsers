@@ -22,12 +22,15 @@ import com.mendix.systemwideinterfaces.core.IUser;
 
 public class SetSessionData extends CustomJavaAction<java.lang.Boolean>
 {
-	private java.lang.String Username;
+	private final java.lang.String Username;
 
-	public SetSessionData(IContext context, java.lang.String Username)
+	public SetSessionData(
+		IContext context,
+		java.lang.String _username
+	)
 	{
 		super(context);
-		this.Username = Username;
+		this.Username = _username;
 	}
 
 	@java.lang.Override

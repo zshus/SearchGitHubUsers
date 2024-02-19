@@ -18,14 +18,18 @@ import com.nimbusds.jose.jwk.RSAKey;
 
 public class Decrypt extends CustomJavaAction<java.lang.String>
 {
-	private java.lang.String jwk;
-	private java.lang.String data;
+	private final java.lang.String jwk;
+	private final java.lang.String data;
 
-	public Decrypt(IContext context, java.lang.String jwk, java.lang.String data)
+	public Decrypt(
+		IContext context,
+		java.lang.String _jwk,
+		java.lang.String _data
+	)
 	{
 		super(context);
-		this.jwk = jwk;
-		this.data = data;
+		this.jwk = _jwk;
+		this.data = _data;
 	}
 
 	@java.lang.Override

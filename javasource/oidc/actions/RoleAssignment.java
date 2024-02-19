@@ -27,12 +27,15 @@ import system.proxies.UserRole;
 
 public class RoleAssignment extends CustomJavaAction<java.util.List<IMendixObject>>
 {
-	private java.lang.String AccessToken;
+	private final java.lang.String AccessToken;
 
-	public RoleAssignment(IContext context, java.lang.String AccessToken)
+	public RoleAssignment(
+		IContext context,
+		java.lang.String _accessToken
+	)
 	{
 		super(context);
-		this.AccessToken = AccessToken;
+		this.AccessToken = _accessToken;
 	}
 
 	@java.lang.Override

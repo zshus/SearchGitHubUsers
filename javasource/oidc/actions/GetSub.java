@@ -17,12 +17,15 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class GetSub extends CustomJavaAction<java.lang.String>
 {
-	private java.lang.String DecodedAccesstoken;
+	private final java.lang.String DecodedAccesstoken;
 
-	public GetSub(IContext context, java.lang.String DecodedAccesstoken)
+	public GetSub(
+		IContext context,
+		java.lang.String _decodedAccesstoken
+	)
 	{
 		super(context);
-		this.DecodedAccesstoken = DecodedAccesstoken;
+		this.DecodedAccesstoken = _decodedAccesstoken;
 	}
 
 	@java.lang.Override

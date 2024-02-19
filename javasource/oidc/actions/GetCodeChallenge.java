@@ -16,21 +16,24 @@ import com.mendix.systemwideinterfaces.core.IContext;
 import com.mendix.webui.CustomJavaAction;
 
 /**
- * Hashes a value using the SHA-256 hash algorithm. 
- * 
- * - value : the value to hash
- * - length : the desired length of the hash. 
- * 
+ * Hashes a value using the SHA-256 hash algorithm. 
+ * 
+ * - value : the value to hash
+ * - length : the desired length of the hash. 
+ * 
  * Returns a SHA-256 hash of 'value', with length 'length'
  */
 public class GetCodeChallenge extends CustomJavaAction<java.lang.String>
 {
-	private java.lang.String codeVerifier;
+	private final java.lang.String codeVerifier;
 
-	public GetCodeChallenge(IContext context, java.lang.String codeVerifier)
+	public GetCodeChallenge(
+		IContext context,
+		java.lang.String _codeVerifier
+	)
 	{
 		super(context);
-		this.codeVerifier = codeVerifier;
+		this.codeVerifier = _codeVerifier;
 	}
 
 	@java.lang.Override

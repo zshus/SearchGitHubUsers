@@ -20,12 +20,15 @@ import com.mendix.webui.CustomJavaAction;
  */
 public class DecodeJWTPlainText extends CustomJavaAction<java.lang.String>
 {
-	private java.lang.String encodedJWT;
+	private final java.lang.String encodedJWT;
 
-	public DecodeJWTPlainText(IContext context, java.lang.String encodedJWT)
+	public DecodeJWTPlainText(
+		IContext context,
+		java.lang.String _encodedJWT
+	)
 	{
 		super(context);
-		this.encodedJWT = encodedJWT;
+		this.encodedJWT = _encodedJWT;
 	}
 
 	@java.lang.Override

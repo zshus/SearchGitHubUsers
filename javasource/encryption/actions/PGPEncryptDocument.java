@@ -15,39 +15,47 @@ import com.mendix.webui.CustomJavaAction;
 import encryption.pgp.PGPFileProcessor;
 
 /**
- * Encrypt the FileDocument using PGP encryption.
- * This is allowed to be the same FileDocument instance and the action will just store the encrypted file in the provided entity.
- * 
- * The certificate must be a valid public PGP key provided by the external party.
- * 
+ * Encrypt the FileDocument using PGP encryption.
+ * This is allowed to be the same FileDocument instance and the action will just store the encrypted file in the provided entity.
+ * 
+ * The certificate must be a valid public PGP key provided by the external party.
+ * 
  * This action will either return true or an exception
  */
 public class PGPEncryptDocument extends CustomJavaAction<java.lang.Boolean>
 {
-	private IMendixObject __ExternalPublicKey;
-	private system.proxies.FileDocument ExternalPublicKey;
-	private IMendixObject __DocumentToEncrypt;
-	private system.proxies.FileDocument DocumentToEncrypt;
-	private IMendixObject __OutputDocument;
-	private system.proxies.FileDocument OutputDocument;
+	/** @deprecated use ExternalPublicKey.getMendixObject() instead. */
+	@java.lang.Deprecated(forRemoval = true)
+	private final IMendixObject __ExternalPublicKey;
+	private final system.proxies.FileDocument ExternalPublicKey;
+	/** @deprecated use DocumentToEncrypt.getMendixObject() instead. */
+	@java.lang.Deprecated(forRemoval = true)
+	private final IMendixObject __DocumentToEncrypt;
+	private final system.proxies.FileDocument DocumentToEncrypt;
+	/** @deprecated use OutputDocument.getMendixObject() instead. */
+	@java.lang.Deprecated(forRemoval = true)
+	private final IMendixObject __OutputDocument;
+	private final system.proxies.FileDocument OutputDocument;
 
-	public PGPEncryptDocument(IContext context, IMendixObject ExternalPublicKey, IMendixObject DocumentToEncrypt, IMendixObject OutputDocument)
+	public PGPEncryptDocument(
+		IContext context,
+		IMendixObject _externalPublicKey,
+		IMendixObject _documentToEncrypt,
+		IMendixObject _outputDocument
+	)
 	{
 		super(context);
-		this.__ExternalPublicKey = ExternalPublicKey;
-		this.__DocumentToEncrypt = DocumentToEncrypt;
-		this.__OutputDocument = OutputDocument;
+		this.__ExternalPublicKey = _externalPublicKey;
+		this.ExternalPublicKey = _externalPublicKey == null ? null : system.proxies.FileDocument.initialize(getContext(), _externalPublicKey);
+		this.__DocumentToEncrypt = _documentToEncrypt;
+		this.DocumentToEncrypt = _documentToEncrypt == null ? null : system.proxies.FileDocument.initialize(getContext(), _documentToEncrypt);
+		this.__OutputDocument = _outputDocument;
+		this.OutputDocument = _outputDocument == null ? null : system.proxies.FileDocument.initialize(getContext(), _outputDocument);
 	}
 
 	@java.lang.Override
 	public java.lang.Boolean executeAction() throws Exception
 	{
-		this.ExternalPublicKey = this.__ExternalPublicKey == null ? null : system.proxies.FileDocument.initialize(getContext(), __ExternalPublicKey);
-
-		this.DocumentToEncrypt = this.__DocumentToEncrypt == null ? null : system.proxies.FileDocument.initialize(getContext(), __DocumentToEncrypt);
-
-		this.OutputDocument = this.__OutputDocument == null ? null : system.proxies.FileDocument.initialize(getContext(), __OutputDocument);
-
 		// BEGIN USER CODE
 
 		PGPFileProcessor p = new PGPFileProcessor();

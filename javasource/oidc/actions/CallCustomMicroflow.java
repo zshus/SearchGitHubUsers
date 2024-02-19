@@ -17,14 +17,18 @@ import com.mendix.systemwideinterfaces.core.IMendixObject;
 
 public class CallCustomMicroflow extends CustomJavaAction<java.util.List<IMendixObject>>
 {
-	private java.lang.String Microflow;
-	private java.lang.String AccessToken;
+	private final java.lang.String Microflow;
+	private final java.lang.String AccessToken;
 
-	public CallCustomMicroflow(IContext context, java.lang.String Microflow, java.lang.String AccessToken)
+	public CallCustomMicroflow(
+		IContext context,
+		java.lang.String _microflow,
+		java.lang.String _accessToken
+	)
 	{
 		super(context);
-		this.Microflow = Microflow;
-		this.AccessToken = AccessToken;
+		this.Microflow = _microflow;
+		this.AccessToken = _accessToken;
 	}
 
 	@java.lang.Override

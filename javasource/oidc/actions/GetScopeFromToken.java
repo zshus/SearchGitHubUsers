@@ -16,12 +16,15 @@ import com.mendix.webui.CustomJavaAction;
 
 public class GetScopeFromToken extends CustomJavaAction<java.lang.String>
 {
-	private java.lang.String DecodedJWT;
+	private final java.lang.String DecodedJWT;
 
-	public GetScopeFromToken(IContext context, java.lang.String DecodedJWT)
+	public GetScopeFromToken(
+		IContext context,
+		java.lang.String _decodedJWT
+	)
 	{
 		super(context);
-		this.DecodedJWT = DecodedJWT;
+		this.DecodedJWT = _decodedJWT;
 	}
 
 	@java.lang.Override

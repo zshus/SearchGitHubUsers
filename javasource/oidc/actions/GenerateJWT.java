@@ -26,26 +26,33 @@ import oidc.proxies.Audience;
 
 public class GenerateJWT extends CustomJavaAction<java.lang.String>
 {
-	private java.lang.String jwk;
-	private oidc.proxies.ENU_SigningAlgorithm algorithm;
-	private IMendixObject __jwt;
-	private oidc.proxies.JWT jwt;
-	private java.lang.String secret;
+	private final java.lang.String jwk;
+	private final oidc.proxies.ENU_SigningAlgorithm algorithm;
+	/** @deprecated use jwt.getMendixObject() instead. */
+	@java.lang.Deprecated(forRemoval = true)
+	private final IMendixObject __jwt;
+	private final oidc.proxies.JWT jwt;
+	private final java.lang.String secret;
 
-	public GenerateJWT(IContext context, java.lang.String jwk, java.lang.String algorithm, IMendixObject jwt, java.lang.String secret)
+	public GenerateJWT(
+		IContext context,
+		java.lang.String _jwk,
+		java.lang.String _algorithm,
+		IMendixObject _jwt,
+		java.lang.String _secret
+	)
 	{
 		super(context);
-		this.jwk = jwk;
-		this.algorithm = algorithm == null ? null : oidc.proxies.ENU_SigningAlgorithm.valueOf(algorithm);
-		this.__jwt = jwt;
-		this.secret = secret;
+		this.jwk = _jwk;
+		this.algorithm = _algorithm == null ? null : oidc.proxies.ENU_SigningAlgorithm.valueOf(_algorithm);
+		this.__jwt = _jwt;
+		this.jwt = _jwt == null ? null : oidc.proxies.JWT.initialize(getContext(), _jwt);
+		this.secret = _secret;
 	}
 
 	@java.lang.Override
 	public java.lang.String executeAction() throws Exception
 	{
-		this.jwt = this.__jwt == null ? null : oidc.proxies.JWT.initialize(getContext(), __jwt);
-
 		// BEGIN USER CODE
 		JWK jwkObj = JWK.parse(jwk);
 		Algorithm alg;

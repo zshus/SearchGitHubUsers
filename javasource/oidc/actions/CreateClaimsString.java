@@ -17,24 +17,28 @@ import com.mendix.thirdparty.org.json.JSONObject;
 
 public class CreateClaimsString extends CustomJavaAction<java.lang.String>
 {
-	private java.util.List<IMendixObject> __claimsList;
-	private java.util.List<oidc.proxies.Claim> claimsList;
+	/** @deprecated use com.mendix.utils.ListUtils.map(claimsList, com.mendix.systemwideinterfaces.core.IEntityProxy::getMendixObject) instead. */
+	@java.lang.Deprecated(forRemoval = true)
+	private final java.util.List<IMendixObject> __claimsList;
+	private final java.util.List<oidc.proxies.Claim> claimsList;
 
-	public CreateClaimsString(IContext context, java.util.List<IMendixObject> claimsList)
+	public CreateClaimsString(
+		IContext context,
+		java.util.List<IMendixObject> _claimsList
+	)
 	{
 		super(context);
-		this.__claimsList = claimsList;
+		this.__claimsList = _claimsList;
+		this.claimsList = java.util.Optional.ofNullable(_claimsList)
+			.orElse(java.util.Collections.emptyList())
+			.stream()
+			.map(claimsListElement -> oidc.proxies.Claim.initialize(getContext(), claimsListElement))
+			.collect(java.util.stream.Collectors.toList());
 	}
 
 	@java.lang.Override
 	public java.lang.String executeAction() throws Exception
 	{
-		this.claimsList = java.util.Optional.ofNullable(this.__claimsList)
-			.orElse(java.util.Collections.emptyList())
-			.stream()
-			.map(__claimsListElement -> oidc.proxies.Claim.initialize(getContext(), __claimsListElement))
-			.collect(java.util.stream.Collectors.toList());
-
 		// BEGIN USER CODE
 		JSONObject result = new JSONObject();
 		JSONObject userinfo = new JSONObject();

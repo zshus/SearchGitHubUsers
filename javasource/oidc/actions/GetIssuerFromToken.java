@@ -17,12 +17,15 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class GetIssuerFromToken extends CustomJavaAction<java.lang.String>
 {
-	private java.lang.String DecodedAccesstoken;
+	private final java.lang.String DecodedAccesstoken;
 
-	public GetIssuerFromToken(IContext context, java.lang.String DecodedAccesstoken)
+	public GetIssuerFromToken(
+		IContext context,
+		java.lang.String _decodedAccesstoken
+	)
 	{
 		super(context);
-		this.DecodedAccesstoken = DecodedAccesstoken;
+		this.DecodedAccesstoken = _decodedAccesstoken;
 	}
 
 	@java.lang.Override

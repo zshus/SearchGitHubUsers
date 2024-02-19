@@ -17,12 +17,15 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class GetNonceValue extends CustomJavaAction<java.lang.String>
 {
-	private java.lang.String Id_token;
+	private final java.lang.String Id_token;
 
-	public GetNonceValue(IContext context, java.lang.String Id_token)
+	public GetNonceValue(
+		IContext context,
+		java.lang.String _id_token
+	)
 	{
 		super(context);
-		this.Id_token = Id_token;
+		this.Id_token = _id_token;
 	}
 
 	@java.lang.Override

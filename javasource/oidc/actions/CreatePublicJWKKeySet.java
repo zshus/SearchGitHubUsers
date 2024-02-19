@@ -18,14 +18,18 @@ import com.nimbusds.jose.jwk.JWKSet;
 
 public class CreatePublicJWKKeySet extends CustomJavaAction<java.lang.String>
 {
-	private java.lang.String signJWK;
-	private java.lang.String encryptJWK;
+	private final java.lang.String signJWK;
+	private final java.lang.String encryptJWK;
 
-	public CreatePublicJWKKeySet(IContext context, java.lang.String signJWK, java.lang.String encryptJWK)
+	public CreatePublicJWKKeySet(
+		IContext context,
+		java.lang.String _signJWK,
+		java.lang.String _encryptJWK
+	)
 	{
 		super(context);
-		this.signJWK = signJWK;
-		this.encryptJWK = encryptJWK;
+		this.signJWK = _signJWK;
+		this.encryptJWK = _encryptJWK;
 	}
 
 	@java.lang.Override

@@ -38,6 +38,7 @@ export async function JavaScript_SearchGitHubUsers(query, userEntity) {
 				entity: userEntity,
 				callback: function(mxObject){
 					mxObject.getAttributes().forEach(function(attributeName){
+						//search github ID name--attributeValue
 						const attributeValue=user[attributeName];
 						if(attributeValue){
 							mxObject.set(attributeName,attributeValue);
